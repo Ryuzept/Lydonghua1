@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default function AnimeCard({ title, image, type, id }) {
+export default function AnimeCard({ id, title, image, type }) {
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
 
