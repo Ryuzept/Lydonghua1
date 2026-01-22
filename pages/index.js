@@ -1,53 +1,58 @@
-import AnimeCard from '../components/AnimeCard'
+import { useState } from "react"
+import AnimeCard from "../components/AnimeCard"
+import SearchBar from "../components/SearchBar"
+import GenreFilter from "../components/GenreFilter"
+import animeData from "../data/animeData"
 
 export default function Home() {
+  const [search, setSearch] = useState("")
+  const [genre, setGenre] = useState("All")
+
+  const genres = ["All", ...new Set(animeData.map(a => a.genre))]
+
+  const filteredAnime = animeData.filter((anime) => {
+    const matchSearch = anime.title.toLowerCase().includes(search.toLowerCase())
+    const matchGenre = genre === "All" || anime.genre === genre
+    return matchSearch && matchGenre
+  })
+
   return (
     <div className="min-h-screen bg-white text-dark">
 
       {/* Navbar */}
       <header className="flex justify-between items-center px-6 py-4 border-b">
-        <h1 className="text-2xl font-bold text-gold">
-          Lydonghua
-        </h1>
-        <nav className="space-x-4 text-sm">
-          <span className="hover:text-gold cursor-pointer">Home</span>
-          <span className="hover:text-gold cursor-pointer">Anime</span>
-          <span className="hover:text-gold cursor-pointer">Donghua</span>
-        </nav>
+        <h1 className="text-2xl font-bold text-gold">Lydonghua</h1>
       </header>
 
-      {/* Section */}
-      <main className="px-6 mt-10">
+      {/* Search & Filter */}
+      <main className="px-6 mt-8">
 
-        <h2 className="text-3xl font-extrabold mb-6">
-          Popular Donghua
-        </h2>
+        <SearchBar value={search} onChange={setSearch} />
+        <GenreFilter
+          genres={genres}
+          selected={genre}
+          onSelect={setGenre}
+        />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <AnimeCard
-            title="Soul Land"
-            type="Donghua"
-            image="https://i.imgur.com/6Xy0YqR.jpg"
-          />
-          <AnimeCard
-            title="Battle Through The Heavens"
-            type="Donghua"
-            image="https://i.imgur.com/WvT0m0C.jpg"
-          />
-          <AnimeCard
-            title="Naruto Shippuden"
-            type="Anime"
-            image="https://i.imgur.com/z5Q7GkG.jpg"
-          />
-          <AnimeCard
-            title="One Piece"
-            type="Anime"
-            image="https://i.imgur.com/J5LVHEL.jpg"
-          />
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+          {filteredAnime.map((anime) => (
+            <AnimeCard
+              key={anime.id}
+              title={anime.title}
+              type={anime.type}
+              image={anime.image}
+            />
+          ))}
         </div>
 
-      </main>
+        {filteredAnime.length === 0 && (
+          <p className="text-center mt-10 text-gray-500">
+            Anime tidak ditemukan
+          </p>
+        )}
 
+      </main>
     </div>
   )
-              }
+            }
