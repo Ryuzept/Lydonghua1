@@ -1,17 +1,13 @@
+import Link from "next/link"
+
 export default function AnimeCard({ title, image, type }) {
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
 
-      {/* Image */}
       <div className="h-48 overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover hover:scale-110 transition duration-300"
-        />
+        <img src={image} alt={title} className="w-full h-full object-cover" />
       </div>
 
-      {/* Content */}
       <div className="p-4">
         <span className="text-xs text-gold font-semibold uppercase">
           {type}
@@ -20,10 +16,13 @@ export default function AnimeCard({ title, image, type }) {
           {title}
         </h3>
 
-        <button className="mt-4 w-full border border-gold text-gold hover:bg-gold hover:text-white transition py-2 rounded-xl">
-          Lihat Detail
-        </button>
+        <Link href="/watch/1">
+          <button className="mt-4 w-full border border-gold text-gold hover:bg-gold hover:text-white py-2 rounded-xl">
+            Nonton
+          </button>
+        </Link>
       </div>
+
     </div>
   )
 }
