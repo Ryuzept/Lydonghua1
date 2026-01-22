@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default function AnimeCard({ title, image, type }) {
+export default function AnimeCard({ title, image, type, id }) {
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
 
@@ -16,9 +16,9 @@ export default function AnimeCard({ title, image, type }) {
           {title}
         </h3>
 
-        <Link href="/watch/1">
+        <Link href={`/anime/${id}`}>
           <button className="mt-4 w-full border border-gold text-gold hover:bg-gold hover:text-white py-2 rounded-xl">
-            Nonton
+            Detail
           </button>
         </Link>
       </div>
