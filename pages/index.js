@@ -20,7 +20,7 @@ export default function Home() {
   })
 
   return (
-    <div className="min-h-screen bg-white text-dark">
+    <div className="min-h-screen bg-white text-black dark:bg-dark dark:text-white">
 
       {/* Navbar */}
       <header className="flex justify-between items-center px-6 py-4 border-b dark:border-gray-700">
