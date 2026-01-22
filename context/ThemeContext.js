@@ -6,10 +6,10 @@ export function ThemeProvider({ children }) {
   const [dark, setDark] = useState(false)
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme")
-    if (saved === "dark") {
-      setDark(true)
+    const savedTheme = localStorage.getItem("theme")
+    if (savedTheme === "dark") {
       document.documentElement.classList.add("dark")
+      setDark(true)
     }
   }, [])
 
