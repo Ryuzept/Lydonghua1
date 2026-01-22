@@ -23,8 +23,11 @@ export default function Home() {
     <div className="min-h-screen bg-white text-black dark:bg-dark dark:text-white">
 
       {/* Navbar */}
-      <header className="flex justify-between items-center px-6 py-4 border-b dark:border-gray-700">
+      <header className="px-6 py-4 border-b bg-white dark:bg-dark">
   <h1 className="text-2xl font-bold text-gold">
+    DARK MODE TEST
+  </h1>
+</header>
     Lydonghua
   </h1>
 
