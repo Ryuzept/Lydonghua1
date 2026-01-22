@@ -1,75 +1,31 @@
-import { useContext } from "react"
-import { ThemeContext } from "../context/ThemeContext"
-import { useState } from "react"
-import AnimeCard from "../components/AnimeCard"
-import SearchBar from "../components/SearchBar"
-import GenreFilter from "../components/GenreFilter"
-import animeData from "../data/animeData"
+import AnimeCard from '../components/AnimeCard'
 
 export default function Home() {
-  const [search, setSearch] = useState("")
-  const [genre, setGenre] = useState("All")
-  const { dark, toggleTheme } = useContext(ThemeContext)
-
-  const genres = ["All", ...new Set(animeData.map(a => a.genre))]
-
-  const filteredAnime = animeData.filter((anime) => {
-    const matchSearch = anime.title.toLowerCase().includes(search.toLowerCase())
-    const matchGenre = genre === "All" || anime.genre === genre
-    return matchSearch && matchGenre
-  })
+  const animeList = [
+    { id: 1, title: 'Tanah Jiwa', type: 'Donghua', image: '/placeholder.png' },
+    { id: 2, title: 'Pertempuran Menembus Langit', type: 'Donghua', image: '/placeholder.png' },
+    { id: 3, title: 'Naruto Shippuden', type: 'Anime', image: '/placeholder.png' },
+    { id: 4, title: 'Satu Potongan', type: 'Anime', image: '/placeholder.png' },
+  ]
 
   return (
-  <div className="min-h-screen bg-white text-black dark:bg-dark dark:text-white">
-    
-    <header className="flex justify-between items-center px-6 py-4 border-b dark:border-gray-700">
-      <h1 className="text-2xl font-bold text-gold">
-        Lydonghua
-      </h1>
+    <div className="min-h-screen bg-white text-black">
+      <header className="px-6 py-4 border-b">
+        <h1 className="text-2xl font-bold text-yellow-600">Lydonghua</h1>
+      </header>
 
-      <button
-        onClick={toggleTheme}
-        className="border border-gold px-4 py-2 rounded-xl text-gold hover:bg-gold hover:text-white transition"
-      >
-        {dark ? "☀️ Light" : "🌙 Dark"}
-      </button>
-    </header>
-
-    {/* selamat datang dilydonghua*/}
-    
-  </div>
-)
-
-      {/* Search & Filter */}
-      <main className="px-6 mt-8">
-
-        <SearchBar value={search} onChange={setSearch} />
-        <GenreFilter
-          genres={genres}
-          selected={genre}
-          onSelect={setGenre}
+      <main className="px-6 py-8">
+        <input
+          placeholder="Cari anime atau donghua..."
+          className="w-full border px-4 py-2 rounded mb-6"
         />
 
-        {/* Grid */}
-        <div className="min-h-screen bg-white text-dark dark:bg-dark dark:text-white">
-          {filteredAnime.map((anime) => (
-            <AnimeCard
-              key={anime.id}
-              id={anime.id}
-              title={anime.title}
-              type={anime.type}
-              image={anime.image}
-            />
+        <div className="grid grid-cols-2 gap-4">
+          {animeList.map((anime) => (
+            <AnimeCard key={anime.id} {...anime} />
           ))}
         </div>
-
-        {filteredAnime.length === 0 && (
-          <p className="text-center mt-10 text-gray-500">
-            Anime tidak ditemukan
-          </p>
-        )}
-
       </main>
     </div>
   )
-            }
+}
