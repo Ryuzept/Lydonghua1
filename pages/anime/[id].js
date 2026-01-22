@@ -17,7 +17,7 @@ export default function AnimeDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-dark px-6 py-8">
+    <div className="min-h-screen bg-white text-black dark:bg-dark dark:text-white px-6 py-8">
 
       {/* Header */}
       <h1 className="text-3xl font-extrabold text-gold mb-6">
