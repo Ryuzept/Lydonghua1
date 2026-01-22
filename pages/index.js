@@ -20,24 +20,25 @@ export default function Home() {
   })
 
   return (
-    <div className="min-h-screen bg-white text-black dark:bg-dark dark:text-white">
+  <div className="min-h-screen bg-white text-black dark:bg-dark dark:text-white">
+    
+    <header className="flex justify-between items-center px-6 py-4 border-b dark:border-gray-700">
+      <h1 className="text-2xl font-bold text-gold">
+        Lydonghua
+      </h1>
 
-      {/* Navbar */}
-      <header className="px-6 py-4 border-b bg-white dark:bg-dark">
-  <h1 className="text-2xl font-bold text-gold">
-    DARK MODE TEST
-  </h1>
-</header>
-    Lydonghua
-  </h1>
+      <button
+        onClick={toggleTheme}
+        className="border border-gold px-4 py-2 rounded-xl text-gold hover:bg-gold hover:text-white transition"
+      >
+        {dark ? "☀️ Light" : "🌙 Dark"}
+      </button>
+    </header>
 
-  <button
-    onClick={toggleTheme}
-    className="border border-gold px-4 py-2 rounded-xl text-gold hover:bg-gold hover:text-white transition"
-  >
-    {dark ? "☀️ Light" : "🌙 Dark"}
-  </button>
-</header>
+    {/* selamat datang dilydonghua*/}
+    
+  </div>
+)
 
       {/* Search & Filter */}
       <main className="px-6 mt-8">
