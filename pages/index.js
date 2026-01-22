@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { ThemeContext } from "../context/ThemeContext"
 import { useState } from "react"
 import AnimeCard from "../components/AnimeCard"
 import SearchBar from "../components/SearchBar"
@@ -7,6 +9,7 @@ import animeData from "../data/animeData"
 export default function Home() {
   const [search, setSearch] = useState("")
   const [genre, setGenre] = useState("All")
+  const { dark, toggleTheme } = useContext(ThemeContext)
 
   const genres = ["All", ...new Set(animeData.map(a => a.genre))]
 
@@ -20,9 +23,18 @@ export default function Home() {
     <div className="min-h-screen bg-white text-dark">
 
       {/* Navbar */}
-      <header className="flex justify-between items-center px-6 py-4 border-b">
-        <h1 className="text-2xl font-bold text-gold">Lydonghua</h1>
-      </header>
+      <header className="flex justify-between items-center px-6 py-4 border-b dark:border-gray-700">
+  <h1 className="text-2xl font-bold text-gold">
+    Lydonghua
+  </h1>
+
+  <button
+    onClick={toggleTheme}
+    className="border border-gold px-4 py-2 rounded-xl text-gold hover:bg-gold hover:text-white transition"
+  >
+    {dark ? "☀️ Light" : "🌙 Dark"}
+  </button>
+</header>
 
       {/* Search & Filter */}
       <main className="px-6 mt-8">
@@ -35,7 +47,7 @@ export default function Home() {
         />
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+        <div className="min-h-screen bg-white text-dark dark:bg-dark dark:text-white">
           {filteredAnime.map((anime) => (
             <AnimeCard
               key={anime.id}
