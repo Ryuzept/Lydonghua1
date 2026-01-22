@@ -19,7 +19,7 @@ export default function WatchPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white text-dark px-4 py-6">
+    <div className="min-h-screen bg-white text-black dark:bg-dark dark:text-white px-4 py-6">
 
       <h1 className="text-2xl font-bold text-gold mb-4">
         Lydonghua • Episode {id}
