@@ -1,7 +1,10 @@
+import AnimeCard from '../components/AnimeCard'
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-dark">
 
+      {/* Navbar */}
       <header className="flex justify-between items-center px-6 py-4 border-b">
         <h1 className="text-2xl font-bold text-gold">
           Lydonghua
@@ -13,18 +16,38 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="text-center mt-24 px-4">
-        <h2 className="text-4xl font-extrabold mb-4">
-          Stream Anime & Donghua
+      {/* Section */}
+      <main className="px-6 mt-10">
+
+        <h2 className="text-3xl font-extrabold mb-6">
+          Popular Donghua
         </h2>
-        <p className="text-gray-600 mb-6">
-          Elegan • Cepat • Berkualitas
-        </p>
-        <button className="bg-gold hover:bg-golddark text-white px-8 py-3 rounded-xl shadow-lg">
-          Mulai Nonton
-        </button>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <AnimeCard
+            title="Soul Land"
+            type="Donghua"
+            image="https://i.imgur.com/6Xy0YqR.jpg"
+          />
+          <AnimeCard
+            title="Battle Through The Heavens"
+            type="Donghua"
+            image="https://i.imgur.com/WvT0m0C.jpg"
+          />
+          <AnimeCard
+            title="Naruto Shippuden"
+            type="Anime"
+            image="https://i.imgur.com/z5Q7GkG.jpg"
+          />
+          <AnimeCard
+            title="One Piece"
+            type="Anime"
+            image="https://i.imgur.com/J5LVHEL.jpg"
+          />
+        </div>
+
       </main>
 
     </div>
   )
-}
+              }
