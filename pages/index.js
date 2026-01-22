@@ -39,6 +39,7 @@ export default function Home() {
           {filteredAnime.map((anime) => (
             <AnimeCard
               key={anime.id}
+              id={anime.id}
               title={anime.title}
               type={anime.type}
               image={anime.image}
